@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="8sp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvMarca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Marca"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+    <TextView
+        android:id="@+id/tvModelo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="modelo"/>
+    <TextView
+        android:id="@+id/tvVersao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="versão"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="8sp"
+        android:background="#cccccc"/>
+
+</LinearLayout>
