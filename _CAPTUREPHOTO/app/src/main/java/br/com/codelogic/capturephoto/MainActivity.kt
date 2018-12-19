@@ -1,9 +1,11 @@
 package br.com.codelogic.capturephoto
 
+import android.app.Activity
 import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.media.MediaScannerConnection
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -11,10 +13,7 @@ import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -40,7 +39,22 @@ class MainActivity : AppCompatActivity() {
         btn!!.setOnClickListener { showPictureDialog() }
 
         cb = findViewById (R.id.cbFoto) as CheckBox
+        cb?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, isChecked ->
+            if(isChecked){
+                VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox();
+            }
+            else{
+                ExcluiArquivoDeDiretorioPorChecboxDesmarcado();
+            }
+        })
 
+        /*cb?.setOnCheckedChangeListener { buttonView, isChecked ->
+            val msg = "You have " + (if (isChecked) "checked" else "unchecked") + " this Check it Checkbox."
+            //Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+            //VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox()
+        }*/
+
+        VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox()
     }
 
     private fun showPictureDialog() {
@@ -61,6 +75,9 @@ class MainActivity : AppCompatActivity() {
         val galleryIntent = Intent(Intent.ACTION_PICK,
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
+        // Adicionado
+        galleryIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(GetStoreDir()));
+
         startActivityForResult(galleryIntent, GALLERY)
     }
 
@@ -76,6 +93,7 @@ class MainActivity : AppCompatActivity() {
          {
          return
          }*/
+
         if (requestCode == GALLERY)
         {
             if (data != null)
@@ -98,13 +116,16 @@ class MainActivity : AppCompatActivity() {
         }
         else if (requestCode == CAMERA)
         {
+            //VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox()
+
             val thumbnail = data!!.extras!!.get("data") as Bitmap
             imageview!!.setImageBitmap(thumbnail)
             saveImage(thumbnail)
             Toast.makeText(this@MainActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
         }
 
-        VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox()
+
+
     }
 
     fun saveImage(myBitmap: Bitmap):String {
@@ -116,7 +137,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("fee",wallpaperDirectory.toString())
         if (!wallpaperDirectory.exists())
         {
-
             wallpaperDirectory.mkdirs()
         }
 
@@ -139,19 +159,20 @@ class MainActivity : AppCompatActivity() {
         catch (e1: IOException) {
             e1.printStackTrace()
         }
+        finally {
+            VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox()
+        }
 
         return ""
     }
 
     fun VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox() {
 
-        val storageDir = File(IMAGE_DIRECTORY)
+        val storageDir = File((Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
 
         val descricaoFoto = "teste.jpg"
 
         val imageDirFoto = File(storageDir, descricaoFoto)
-
-        var teste : Boolean = imageDirFoto.exists()
 
         if (imageDirFoto.exists()) {
             cb!!.setChecked(true)
@@ -160,7 +181,7 @@ class MainActivity : AppCompatActivity() {
 
     fun ExcluiArquivoDeDiretorioPorChecboxDesmarcado() {
 
-        val storageDir = File(IMAGE_DIRECTORY)
+        val storageDir = File((Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
 
         val descricaoFoto = "teste.jpg"
 
@@ -170,6 +191,17 @@ class MainActivity : AppCompatActivity() {
             imageDirFoto.delete()
             Toast.makeText(this@MainActivity, "Imagem apagada com sucesso!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun GetStoreDir() : File {
+
+        val storageDir = File(IMAGE_DIRECTORY)
+
+        val descricaoFoto = "teste.jpg"
+
+        val imageDirFoto = File(storageDir, descricaoFoto)
+
+        return imageDirFoto
     }
 
     companion object {
