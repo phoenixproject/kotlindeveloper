@@ -10,6 +10,7 @@
 
     <!-- Para uso de leitura de imagens -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- Para uso da Câmera -->
     <uses-permission android:name="android.permission.CAMERA" />

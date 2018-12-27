@@ -1,52 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".MainActivity">
 
-    <LinearLayout
-            android:layout_width="fill_parent"
+    <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:id="@+id/btnSend"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/btnSend" />
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/btnFoto" />
 
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:srcCompat="@android:drawable/btn_star_big_on"
-                android:id="@+id/imageView"/>
-        <Button
-                android:text="@string/image_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/coletor_btFoto1Id"/>
+    <CheckBox
+            android:text="@string/cbFoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/cbFoto"/>
 
-        <!-- Botão Foto -->
-        <Button
-                android:id="@+id/coletor_btnFotoId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btnFoto" />
+    <ImageView
+            android:contentDescription="@string/btnImage"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/iv"/>
 
-        <!-- Checkbox Primeira Foto -->
-        <CheckBox
-                android:id="@+id/coletor_cbFoto1Id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/cbFoto1" />
-
-        <!-- Checkbox Segunda Foto -->
-        <CheckBox
-                android:id="@+id/coletor_cbFoto2Id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/cbFoto2"/>
-
-    </LinearLayout>
-
-
-
-</ScrollView>
+</LinearLayout>
