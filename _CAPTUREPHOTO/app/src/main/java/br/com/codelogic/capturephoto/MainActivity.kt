@@ -205,6 +205,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val IMAGE_DIRECTORY = "/demonuts"
+        //private val IMAGE_DIRECTORY = "/demonuts"
+        private val IMAGE_DIRECTORY = "/DCIM/Camera/demonuts"
     }
 }

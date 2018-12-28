@@ -202,17 +202,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun choosePhotoFromGallary() {
-        val galleryIntent = Intent(Intent.ACTION_PICK,
+
+        val galleryIntent : Intent = Intent(Intent.ACTION_PICK,
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
         // Adicionado
-        galleryIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(GetImageOnStoreDir()));
+        //galleryIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(GetImageOnStoreDir()));
 
         startActivityForResult(galleryIntent, GALLERY)
     }
 
     private fun takePhotoFromCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+        //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(GetImageFromBase64()));
+
         startActivityForResult(intent, CAMERA)
     }
 
@@ -231,7 +235,9 @@ class MainActivity : AppCompatActivity() {
                 val contentURI = data!!.data
                 try
                 {
+                    //val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
+
                     val path = saveImage(bitmap)
                     Toast.makeText(this@MainActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
                     imageview!!.setImageBitmap(bitmap)
@@ -253,18 +259,20 @@ class MainActivity : AppCompatActivity() {
             saveImage(thumbnail)
             Toast.makeText(this@MainActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
         }
-
-
-
     }
 
     fun saveImage(myBitmap: Bitmap):String {
+
         val bytes = ByteArrayOutputStream()
-        myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
-        val wallpaperDirectory = File(
-            (Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
+        //myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
+        myBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+
+
+        val wallpaperDirectory : File = GetStoreDir()
+
         // have the object build the directory structure, if needed.
         Log.d("fee",wallpaperDirectory.toString())
+
         if (!wallpaperDirectory.exists())
         {
             wallpaperDirectory.mkdirs()
@@ -274,17 +282,21 @@ class MainActivity : AppCompatActivity() {
         {
             Log.d("heel",wallpaperDirectory.toString())
             //val f = File(wallpaperDirectory, ((Calendar.getInstance().getTimeInMillis()).toString() + ".jpg"))
-            val f = File(wallpaperDirectory, ("teste.jpg"))
-            f.createNewFile()
-            val fo = FileOutputStream(f)
-            fo.write(bytes.toByteArray())
-            MediaScannerConnection.scanFile(this,
-                arrayOf(f.getPath()),
-                arrayOf("image/jpeg"), null)
-            fo.close()
-            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath())
+            val file : File = File(wallpaperDirectory, ("teste.jpg"))
 
-            return f.getAbsolutePath()
+            file.createNewFile()
+
+            val fileOutputStream : FileOutputStream = FileOutputStream(file)
+
+            fileOutputStream.write(bytes.toByteArray())
+
+            MediaScannerConnection.scanFile(this, arrayOf(file.getPath()), arrayOf("image/jpeg"), null)
+
+            fileOutputStream.close()
+
+            Log.d("TAG", "File Saved::--->" + file.getAbsolutePath())
+
+            return file.getAbsolutePath()
         }
         catch (e1: IOException) {
             e1.printStackTrace()
@@ -298,7 +310,7 @@ class MainActivity : AppCompatActivity() {
 
     fun VerificaExistenciaDeImagensEmDiretorioParaControleDeCheckbox() {
 
-        val storageDir = File((Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
+        val storageDir : File = GetStoreDir()
 
         val descricaoFoto = "teste.jpg"
 
@@ -311,7 +323,7 @@ class MainActivity : AppCompatActivity() {
 
     fun ExcluiArquivoDeDiretorioPorChecboxDesmarcado() {
 
-        val storageDir = File((Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
+        val storageDir : File = GetStoreDir()
 
         val descricaoFoto = "teste.jpg"
 
@@ -332,7 +344,7 @@ class MainActivity : AppCompatActivity() {
 
     fun GetImageOnStoreDir() : File {
 
-        val storageDir = File((Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
+        val storageDir = GetStoreDir()
 
         val descricaoFoto : String = "teste.jpg"
 
@@ -345,7 +357,7 @@ class MainActivity : AppCompatActivity() {
 
     fun GetImageFromBase64() : File {
 
-        val storageDir = File((Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
+        val storageDir = GetStoreDir()
 
         val descricaoFoto = "teste.jpg"
 
@@ -379,7 +391,7 @@ class MainActivity : AppCompatActivity() {
 
         val teste = JSONObject(jsonString)
 
-        val jsonArray = JSONArray(jsonString)
+        //val jsonArray = JSONArray(jsonString)
 
         /*val list = ArrayList<President>()
 
