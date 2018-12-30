@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SendImage</string>
+    <string name="image_button">Tirar foto</string>
+    <string name="btnGps">Georeferenciar</string>
+    <string name="btnImage">Imagem em disco</string>
+    <string name="btnFoto">Select or Capture Image</string>
+    <string name="btnSend">Enviar Foto</string>
+    <string name="btnSalvar">Salvar Dados</string>
+    <string name="cbFoto">Existe Foto?</string>
+    <string name="cannot">Cannot</string>
+    <string name="album_name">Câmera Sample</string>
+</resources>
