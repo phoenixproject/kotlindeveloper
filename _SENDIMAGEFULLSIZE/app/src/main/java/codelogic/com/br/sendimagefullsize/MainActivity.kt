@@ -458,11 +458,6 @@ class MainActivity : AppCompatActivity() {
         return base64
     }
 
-    /*fun decoder(base64Str: String, pathFile: String): Unit{
-        val imageByteArray = Base64.getDecoder().decode(base64Str)
-        File(pathFile).writeBytes(imageByteArray)
-    }*/
-
     fun ConverterParaStringBase64() : String
     {
         val arquivo = GetImageFromBase64()
