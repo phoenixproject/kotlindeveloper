@@ -19,6 +19,9 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 #### KOTLIN CONTACT LIST VIEW
 ##### [Get Contact List In Android Kotlin And Show in Custom ListView Programmatically](https://demonuts.com/contact-list-kotlin/)<br/>
 
+#### O projeto GETLOCATION é de autoria de kmvignesh.
+##### [LocationExample](https://github.com/kmvignesh/LocationExample/)<br/>
+
 ## Links Auxiliares
 
 #### GET CURRENT LOCATION
@@ -32,3 +35,4 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 
 #### RETRIEVE A LIST OF CONTACTS
 ##### [Retrieve a list of contacts - Developer Google](https://developer.android.com/training/contacts-provider/retrieve-names)<br/>
+
