@@ -39,3 +39,15 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 #### RETRIEVE A LIST OF CONTACTS
 ##### [Retrieve a list of contacts - Developer Google](https://developer.android.com/training/contacts-provider/retrieve-names)<br/>
 
+#### ANDROID ACCELEROMETER
+##### [Let’s play with the Android accelerometer + Kotlin](https://medium.com/@enzoftware/lets-play-with-the-android-accelerometer-kotlin-%EF%B8%8F-ed92981b0a6c)<br/>
+
+#### ANDROID SENSORS
+##### [Handling Sensors in Android Kotlin](https://medium.com/@nhkarthick/handling-sensors-in-android-kotlin-d728ddc20394)<br/>
+
+#### ANDROID MOTION SENSORS
+##### [How to Implement Motion Sensor in a Kotlin App](https://expertise.jetruby.com/how-to-implement-motion-sensor-in-a-kotlin-app-b70db1b5b8e5)<br/>
+
+#### ANDROID SENSOR ACTIVITY
+##### [SensorActivity](https://gist.github.com/andriyadi/3960718e411c4dab449d3cba27615cea)<br/>
+
