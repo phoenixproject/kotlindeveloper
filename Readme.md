@@ -22,6 +22,9 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 #### O projeto GETLOCATION é de autoria de kmvignesh.
 ##### [LocationExample](https://github.com/kmvignesh/LocationExample/)<br/>
 
+#### O projeto GETACCELEROMETERSENSOR é de autoria de Android Codility.
+##### [AccelerometerSensor](https://github.com/AndroidCodility/AccelerometerSensor/)<br/>
+
 ## Links Auxiliares
 
 #### GET CURRENT LOCATION
