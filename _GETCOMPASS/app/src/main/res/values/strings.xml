@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Get Compass</string>
+    <string name="compass">Compass</string>
+    <string name="azimuth">Azimuth</string>
+</resources>

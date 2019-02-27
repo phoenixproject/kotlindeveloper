@@ -25,6 +25,10 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 #### O projeto GETACCELEROMETERSENSOR é de autoria de Android Codility.
 ##### [AccelerometerSensor](https://github.com/AndroidCodility/AccelerometerSensor/)<br/>
 
+#### O projeto GET COMPASS é de autoria de Andreas Mausch e foi alterado para funcionar na API 15.
+##### [GetCompass](https://andreas-mausch.de/blog/2017/05/14/compass-app-in-kotlin/)<br/>
+##### [Andres Maush Github - GetCompass](https://github.com/andreas-mausch/compass/blob/master/app/src/main/java/de/neonew/compass/MainActivity.kt/)<br/>
+
 ## Links Auxiliares
 
 #### GET CURRENT LOCATION
