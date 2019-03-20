@@ -1,4 +1,4 @@
-package br.com.codelogic.androidroom
+package br.com.luizmarcus.exemploroom
 
 import org.junit.Test
 

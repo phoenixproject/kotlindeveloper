@@ -30,7 +30,7 @@ class ListAdapter(val context: Context, val list: ArrayList<President>) : BaseAd
     }
 
     override fun getItemId(position: Int): Long {
-        return position.toLong();
+        return position.toLong()
     }
 
     override fun getCount(): Int {

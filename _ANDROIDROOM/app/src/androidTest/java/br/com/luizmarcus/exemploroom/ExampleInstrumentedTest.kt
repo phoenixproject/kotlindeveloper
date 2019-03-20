@@ -1,4 +1,4 @@
-package br.com.codelogic.androidroom
+package br.com.luizmarcus.exemploroom
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("br.com.codelogic.androidroom", appContext.packageName)
+        assertEquals("br.com.luizmarcus.exemploroom", appContext.packageName)
     }
 }

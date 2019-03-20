@@ -2,19 +2,18 @@ package br.com.codelogic.netconnect
 
 import android.os.AsyncTask
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.HttpURLConnection
+import java.net.URL
 import org.json.JSONException
 import java.io.*
 import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         //var url = "http://codelogic.com.br/presidentslist.json"
         //var url = "http://localhost:52522/teste/testepost"
         //termos[0] = "http://localhost:52522/teste/testepost"
-        termos[0] = "http://192.168.103.7:52522/teste/testepost"
+        //termos[0] = "http://192.168.103.7:52522/teste/testepost"
+        termos[0] = "http://192.168.102.75:57075/api/values"
         //termos[0] = "http://192.168.1.21:10049/teste/testepost"
         //termos[0] = "http://192.168.1.21:10049/teste/create"
         //termos[0] = "http://192.168.103.7:52522/teste/create"
@@ -42,8 +42,9 @@ class MainActivity : AppCompatActivity() {
         termos[1] = GerarJSON(otlist)
 
 
-        AsyncTaskHandleJsonPOST2().execute(termos[0],termos[1]);
+        //AsyncTaskHandleJsonPOST2().execute(termos[0],termos[1]);
         //AsyncTaskHandleJsonGET().execute(termos[0],termos[1]);
+        //AsyncTaskHandleJsonGET().execute(termos[0])
         //AsyncTaskHandleJsonGET().execute(url);
         //AsyncTaskHandleJsonPOST().execute(url);
         //AsyncTaskHandleJsonPOSTTeste().execute(termos[0],termos[1]);
@@ -141,7 +142,8 @@ class MainActivity : AppCompatActivity() {
     inner class AsyncTaskHandleJsonPOSTTeste : AsyncTask<String,String,String>() {
         override fun doInBackground(vararg url: String?): String {
 
-            var method: String = "teste/testepost/"
+            //var method: String = "teste/testepost/"
+            var method: String = "api/values/"
 
             //var url: URL? = null
             //var url: URL? = URL("http://localhost:52522/" + method)
@@ -163,7 +165,7 @@ class MainActivity : AppCompatActivity() {
                 conexao.setRequestProperty("Content-Type", "application/json")
                 conexao.setRequestProperty("Accept", "application/json")
                 conexao.setRequestProperty("Accept-Encoding", "gzip")
-                conexao.setRequestProperty("Content-Type", "charset=utf-8");
+                conexao.setRequestProperty("Content-Type", "charset=utf-8")
 
                 conexao.doInput = true
                 conexao.doOutput = true
@@ -204,7 +206,7 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
-                conexao!!.disconnect()
+                conexao.disconnect()
             }
 
             var teste : String = json
@@ -302,7 +304,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleJsonPOST(jsonString: String?) {
 
-        val teste = jsonString;
+        val teste = jsonString
 
         val jsonArray = JSONArray(jsonString)
 

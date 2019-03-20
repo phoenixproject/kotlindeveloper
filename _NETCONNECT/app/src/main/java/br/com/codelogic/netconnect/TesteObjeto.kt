@@ -1,5 +1,5 @@
 package br.com.codelogic.netconnect
 
-public class TesteObjeto (
+class TesteObjeto (
     val valor: Int
 )
