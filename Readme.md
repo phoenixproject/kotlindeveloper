@@ -30,7 +30,7 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 ##### [Andres Maush Github - GetCompass](https://github.com/andreas-mausch/compass/blob/master/app/src/main/java/de/neonew/compass/MainActivity.kt/)<br/>
 
 #### O projeto ANDROID ROOM é de autoria de Luiz Marcus e foi alterado para funcionar na API 15.
-##### [Get Compass](https://luizmarcus.com/android/persistindo-dados-no-android-com-a-room/)<br/>
+##### [Persistindo Dados no Android com a Room](https://luizmarcus.com/android/persistindo-dados-no-android-com-a-room/)<br/>
 ##### [Luiz marcus Github - ExemploRoom](https://github.com/luizmarcus/Android/tree/master/ExemploRoom)<br/>
 
 ## Links Auxiliares
