@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private var database: CarDatabase? = null
+    private var databaseCarChild: CarChildDatabase? = null
+
     private var textView: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +19,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         database = CarDatabase.getInstance(this)
+        databaseCarChild = CarChildDatabase.getInstance(this)
+
         textView = findViewById(R.id.text)
 
         UpdateViewTask(database,textView).execute()
-
+        UpdateViewTaskChild(databaseCarChild,textView).execute()
     }
 
     /**
@@ -46,6 +50,28 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private class InsertCarChildTask(val database: CarChildDatabase?): AsyncTask<Void,Void,Void?>(){
+
+        override fun doInBackground(vararg params: Void?): Void? {
+
+            var lastId = database?.carChildDao()?.findLastCarId()
+
+            if (lastId == null){
+                lastId = 1
+            }else{
+                lastId ++
+            }
+
+            var teste = "Car$lastId"
+
+            val car = CarChild(null,"Car$lastId")
+            database?.carChildDao()?.insert(car)
+
+            return null
+        }
+
+    }
+
     /**
      * AsyncTask que limpa o banco de dados
      */
@@ -54,6 +80,17 @@ class MainActivity : AppCompatActivity() {
         override fun doInBackground(vararg params: Void?): Void? {
 
             database?.carDao()?.deleteAll()
+
+            return null
+        }
+
+    }
+
+    private class DeleteAllTaskChild(val database: CarChildDatabase?): AsyncTask<Void,Void,Void?>(){
+
+        override fun doInBackground(vararg params: Void?): Void? {
+
+            database?.carChildDao()?.deleteAll()
 
             return null
         }
@@ -87,13 +124,49 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private class UpdateViewTaskChild(val database: CarChildDatabase?, var textView: TextView?): AsyncTask<Void,Void,List<CarChild>?>(){
+
+        override fun doInBackground(vararg params: Void?): List<CarChild>? {
+
+            return database?.carChildDao()?.getAllCar()
+        }
+
+        override fun onPostExecute(result: List<CarChild>?) {
+
+            if (result!!.isNotEmpty()){
+                var text = ""
+                for (car in result) {
+                    text +=  "Id: ${car.id}, Name: ${car.name}"+"\n"
+                }
+
+                textView?.text = text
+            }else{
+                textView?.text = textView?.context?.getString(R.string.empty)
+            }
+
+        }
+
+    }
+
     fun insertCar(view: View){
         InsertCarTask(database).execute()
         UpdateViewTask(database,textView).execute()
+    }
+
+    fun insertCarChild(view: View){
+        InsertCarChildTask(databaseCarChild).execute()
+        UpdateViewTaskChild(databaseCarChild,textView).execute()
     }
 
     fun deleteAll(view: View){
         DeleteAllTask(database).execute()
         UpdateViewTask(database,textView).execute()
     }
+
+    fun deleteAllCarChild(view: View){
+        DeleteAllTaskChild(databaseCarChild).execute()
+        UpdateViewTaskChild(databaseCarChild,textView).execute()
+    }
+
+
 }

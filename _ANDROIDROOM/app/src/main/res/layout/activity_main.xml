@@ -25,7 +25,19 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="insertCarChild"
+        android:text="@string/insert_child"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="deleteAll"
         android:text="@string/delete"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deleteAllCarChild"
+        android:text="@string/delete_child"/>
 
 </LinearLayout>

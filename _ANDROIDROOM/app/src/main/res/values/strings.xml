@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">ExemploRoom</string>
     <string name="empty">Lista vazia</string>
+
     <string name="insert">Inserir Carro</string>
     <string name="delete">Delete Tudo!</string>
+
+    <string name="insert_child">Inserir Carro (Com Herança)</string>
+    <string name="delete_child">Delete Tudo! (Com Herança)</string>
 </resources>
