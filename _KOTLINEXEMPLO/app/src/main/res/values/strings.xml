@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KotlinExemplo</string>
+    <string name="str_teste">String Teste</string>
 </resources>
