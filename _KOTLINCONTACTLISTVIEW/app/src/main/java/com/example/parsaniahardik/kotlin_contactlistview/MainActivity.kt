@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             val contactModel = ContactModel()
             contactModel.setNames(name)
             contactModel.setNumbers(phoneNumber)
-            contactModelArrayList!!.add(cox'ntactModel)
+            contactModelArrayList!!.add(contactModel)
             Log.d("name>>", name + "  " + phoneNumber)
         }
         phones.close()
