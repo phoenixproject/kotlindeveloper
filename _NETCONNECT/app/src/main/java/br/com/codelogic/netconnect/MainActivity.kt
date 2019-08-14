@@ -230,6 +230,7 @@ class MainActivity : AppCompatActivity() {
             try{
                 connection.connect()
                 text = connection.inputStream.use { it.reader().use{reader -> reader.readText()} }
+                //connection.responseCode
             } finally {
                 connection.disconnect()
             }
@@ -241,7 +242,6 @@ class MainActivity : AppCompatActivity() {
             super.onPostExecute(result)
             handleJsonGET(result)
         }
-
     }
 
     inner class AsyncTaskHandleJsonPOST : AsyncTask<String,String,String>() {
