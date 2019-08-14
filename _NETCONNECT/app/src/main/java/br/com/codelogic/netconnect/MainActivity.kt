@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val termos = arrayOfNulls<String>(2)
 
         //var url = "http://mysafeinfo.com/api/data?list=president&format=json"
-        //var url = "http://codelogic.com.br/presidentslist.json"
+        var url = "http://codelogic.com.br/presidentslist.json"
         //var url = "http://localhost:52522/teste/testepost"
         //termos[0] = "http://localhost:52522/teste/testepost"
         //termos[0] = "http://192.168.103.7:52522/teste/testepost"
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         //AsyncTaskHandleJsonPOST2().execute(termos[0],termos[1]);
         //AsyncTaskHandleJsonGET().execute(termos[0],termos[1]);
         //AsyncTaskHandleJsonGET().execute(termos[0])
-        //AsyncTaskHandleJsonGET().execute(url);
+        AsyncTaskHandleJsonGET().execute(url);
         //AsyncTaskHandleJsonPOST().execute(url);
         //AsyncTaskHandleJsonPOSTTeste().execute(termos[0],termos[1]);
 
@@ -277,7 +277,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleJsonGET(jsonString: String?) {
 
-        val teste = JSONObject(jsonString)
+        //val teste = JSONObject(jsonString)
 
         val jsonArray = JSONArray(jsonString)
 
