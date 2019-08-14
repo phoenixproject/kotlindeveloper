@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log
+import br.com.codelogic.netconnectphp.data.list.ListAdapter
 import br.com.codelogic.netconnectphp.data.list.President
 import br.com.codelogic.netconnectphp.data.list.TesteObjeto
 
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         val termos = arrayOfNulls<String>(2);
 
         //termos[0] = "http://192.168.157.128/contactsbkp/public/index.php";
-        termos[0] = "http://codelogic.com.br/presidentslist2.json";
+        termos[0] = "http://codelogic.com.br/presidentslist.json";
+        //termos[0] = "http://codelogic.com.br/presidentslist2.json";
 
         var ot = TesteObjeto(7)
         var otlist: MutableList<TesteObjeto> = mutableListOf(ot)
@@ -59,33 +61,31 @@ class MainActivity : AppCompatActivity() {
         {
 
         }
-
     }
 
     private fun handleJsonGET(jsonString: String?) {
 
         val jsonArray = JSONArray(jsonString)
 
-        //val teste = JSONObject(jsonString)
-
         val list = ArrayList<President>()
 
         var x = 0
-        while (x < jsonArray.length()) {
+        while (x < jsonArray.length()){
 
             val jsonObject = jsonArray.getJSONObject(x)
 
-            list.add(
-                President(
-                    jsonObject.getInt("id"),
-                    jsonObject.getString("nm"),
-                    jsonObject.getString("pp"),
-                    jsonObject.getString("tm")
-                )
-            )
+            list.add(President(
+                jsonObject.getInt("id"),
+                jsonObject.getString("nm"),
+                jsonObject.getString("pp"),
+                jsonObject.getString("tm")
+            ))
 
             x++
         }
+
+        val adapter = ListAdapter(this, list)
+        presidents_list.adapter = adapter
     }
 
     fun GerarJSON(list: List<TesteObjeto>): String {
