@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         //val termos = arrayOfNulls<String>(2);
 
-        termos[0] = "http://192.168.1.49/contactsbkp/public/index.php";
-        //termos[0] = "http://192.168.1.113/php/contactsbkp/public/index.php";
+        //termos[0] = "http://192.168.1.49/contactsbkp/public/index.php";
+        termos[0] = "http://192.168.1.113/php/contactsbkp/public/index.php";
         //termos[0] = "http://192.168.1.113/presidentslist2.json"
         //termos[0] = "http://192.168.1.113/presidentslist.json"
         //termos[0] = "http://codelogic.com.br/presidentslist.json";
@@ -38,9 +38,9 @@ class MainActivity : AppCompatActivity() {
 
         termos[1] = GerarJSON(otlist)
 
-        //AsyncTaskHandleJsonGET().execute(termos[0])
+        AsyncTaskHandleJsonGET().execute(termos[0])
         //AsyncTaskHandleJsonPOST().execute(termos[0],termos[1]);
-        AsyncTaskHandleJsonPOST3().execute(termos[0],termos[1]);
+        //AsyncTaskHandleJsonPOST2().execute(termos[0],termos[1]);
     }
 
     inner class AsyncTaskHandleJsonPOST : AsyncTask<String, String, String>() {
@@ -137,78 +137,33 @@ class MainActivity : AppCompatActivity() {
 
             val serverURL: String = endererourl
             val url = URL(serverURL)
-            val conexao = url.openConnection() as HttpURLConnection
-
-            conexao.requestMethod = "POST"
-            conexao.connectTimeout = 300000
-            conexao.connectTimeout = 300000
-            conexao.doOutput = true
+            val connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "POST"
+            connection.connectTimeout = 300000
+            connection.connectTimeout = 300000
+            connection.doOutput = true
 
             val postData: ByteArray = dados.toByteArray(Charset.defaultCharset())
 
+            connection.setRequestProperty("charset", "utf-8")
+            connection.setRequestProperty("Content-lenght", postData.size.toString())
+            connection.setRequestProperty("Content-Type", "application/json")
 
             try {
 
-                conexao.readTimeout = 30000
-                conexao.connectTimeout = 30000
-                conexao.requestMethod = "POST"
+                val outputStream: DataOutputStream = DataOutputStream(connection.outputStream)
+                outputStream.write(postData)
+                outputStream.flush()
 
-                conexao.setRequestProperty("charset", "utf-8")
-                conexao.setRequestProperty("Content-Type", "application/json")
-                conexao.setRequestProperty("Content-length", postData.size.toString())
-
-                conexao.setRequestProperty("Connection", "keep-alive")
-                conexao.setRequestProperty("Accept", "application/json")
-                conexao.setRequestProperty("Accept-Encoding", "gzip")
-                conexao.setRequestProperty("Content-Type", "charset=utf-8")
-
-                conexao.doInput = true
-                conexao.doOutput = true
-
-                val outputStream = BufferedOutputStream(conexao.outputStream)
-                val writer = BufferedWriter(OutputStreamWriter(outputStream, "utf-8"))
-
-                writer.write(dados)
-                //writer.write(url[1])
-                writer.flush()
-                writer.close()
-
-                outputStream.close()
-
-                val jsonObject = JSONObject()
-                val inputStream: InputStream
-
-                // get stream
-                if (conexao.responseCode < HttpURLConnection.HTTP_BAD_REQUEST) {
-                    inputStream = conexao.inputStream
-                } else {
-                    inputStream = conexao.errorStream
-                }
-
-                // parse stream
-                val bufferedReader = BufferedReader(InputStreamReader(inputStream))
-
-                var line: String? = null
-                //while ((line = bufferedReader.readLine()) != null) {
-                while ((line == bufferedReader.readLine()) != null) {
-                    stringBuilder.append(line!! + "\n")
-                }
-
-                json = stringBuilder.toString()
+                //outputStream.close()
 
             } catch (e: NullPointerException) {
                 e.printStackTrace()
             } catch (e: Exception) {
                 e.printStackTrace()
-            } finally {
-                conexao.disconnect()
             }
 
-            var teste : String = json
-
-            return json
-
-            /*if (conexao.responseCode != HttpURLConnection.HTTP_OK && conexao.responseCode != HttpURLConnection.HTTP_CREATED) {
+            if (connection.responseCode != HttpURLConnection.HTTP_OK && connection.responseCode != HttpURLConnection.HTTP_CREATED) {
                 try {
 
                     val inputStream: InputStream? = null
@@ -226,10 +181,30 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            json = conexao.inputStream.use { it.reader().use{reader -> reader.readText()} }
+            /*val jsonObject = JSONObject()
+            val inputStream: InputStream
+
+            // get stream
+            if (connection.responseCode < HttpURLConnection.HTTP_BAD_REQUEST) {
+                inputStream = connection.inputStream
+            } else {
+                inputStream = connection.errorStream
+            }
+
+            // parse stream
+            val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+
+            var line: String? = null
+            //while ((line = bufferedReader.readLine()) != null) {
+            while ((line == bufferedReader.readLine()) != null) {
+                stringBuilder.append(line!! + "\n")
+            }
+
+            json = stringBuilder.toString()*/
+            json = connection.inputStream.use { it.reader().use{reader -> reader.readText()} }
 
             //return text
-            return json*/
+            return json
         }
 
         override fun onPostExecute(result: String?) {
@@ -402,10 +377,10 @@ class MainActivity : AppCompatActivity() {
             x++
         }
 
-        /*val adapter = ListAdapter(this, list)
-        presidents_list.adapter = adapter*/
+        val adapter = ListAdapter(this, list)
+        presidents_list.adapter = adapter
 
-        AsyncTaskHandleJsonPOST3().execute(termos[0],termos[1]);
+        //AsyncTaskHandleJsonPOST2().execute(termos[0],termos[1]);
     }
 
     fun GerarJSON(list: List<TesteObjeto>): String {
