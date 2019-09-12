@@ -79,7 +79,6 @@ public function __construct() {
 	
    if(isset($_POST['dados']))
    {
-	   $valor = filter_input(INPUT_POST, 'dados', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);           
 	   $this->retornaObjetoJson();
    }
    else{    
