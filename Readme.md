@@ -72,7 +72,7 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 
 ## Example
 
-	Checkout the [Net Connect PHP](https://github.com/phoenixproject/kotlindeveloper/tree/master/_NETCONNECTPHP). Basic example:
+	[Checkout the Net Connect PHP](https://github.com/phoenixproject/kotlindeveloper/tree/master/_NETCONNECTPHP) Basic example:
 
 ```php
 	public function __construct() {
