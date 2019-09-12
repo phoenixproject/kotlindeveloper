@@ -73,26 +73,26 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 ###### PHP Server Basic Example for Net Connect PHP
 
 ```php
-	public function __construct() {
-        
-       $post = file_get_contents('php://input');
-        
-       if(isset($_POST['dados']))
-       {
-           $valor = filter_input(INPUT_POST, 'dados', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);           
-           $this->retornaObjetoJson();
-       }
-       else{    
-           $json = file_get_contents('http://www.codelogic.com.br/presidentslist.json');
-           echo $json;
-       }      
-    }    
-    
-    public function retornaObjetoJson()
-    {
-        $animal = "Lion";
-        echo json_encode($animal);
-    }
+public function __construct() {
+	
+   $post = file_get_contents('php://input');
+	
+   if(isset($_POST['dados']))
+   {
+	   $valor = filter_input(INPUT_POST, 'dados', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);           
+	   $this->retornaObjetoJson();
+   }
+   else{    
+	   $json = file_get_contents('http://www.codelogic.com.br/presidentslist.json');
+	   echo $json;
+   }      
+}    
+
+public function retornaObjetoJson()
+{
+	$animal = "Lion";
+	echo json_encode($animal);
+}
 ```
 
 #### GET MAC ADDRESS AND PHONE MODEL (Referências)
