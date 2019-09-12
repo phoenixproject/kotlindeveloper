@@ -66,3 +66,37 @@ O link acima teve apenas o seu arquivo gradle atualizado para que fosse executad
 ##### [Android Kotlin Usage Tutorial #085 - Compass with GPS location, part 1](https://www.youtube.com/watch?v=CXgELb2gWI0)<br/>
 ##### [Android Kotlin Usage Tutorial #086 - Compass with GPS location, part 2](https://www.youtube.com/watch?v=972tRIzQ5iI)<br/>
 
+#### NET CONNECT PHP (Referências)
+##### [How to HTTP request by POST method with Kotlin](https://stackoverflow.com/questions/49188722/how-to-http-request-by-post-method-with-kotlin)<br/>
+##### [Making a JSON POST Request With HttpURLConnection](https://www.baeldung.com/httpurlconnection-post)<br/>
+
+## Example
+
+	Checkout the [Net Connect PHP](https://github.com/phoenixproject/kotlindeveloper/tree/master/_NETCONNECTPHP). Basic example:
+
+```php
+	public function __construct() {
+        
+       $post = file_get_contents('php://input');
+        
+       if(isset($_POST['dados']))
+       {
+           $valor = filter_input(INPUT_POST, 'dados', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);           
+           $this->retornaObjetoJson();
+       }
+       else{    
+           $json = file_get_contents('http://www.codelogic.com.br/presidentslist.json');
+           echo $json;
+       }      
+    }    
+    
+    public function retornaObjetoJson()
+    {
+        $animal = "Lion";
+        echo json_encode($animal);
+    }
+```
+
+#### GET MAC ADDRESS AND PHONE MODEL (Referências)
+##### [How to finda MAC address of an Android device](https://stackoverflow.com/questions/10831578/how-to-find-mac-address-of-an-android-device-programmatically)<br/>
+##### [How to get device model number](http://android--kotlin.blogspot.com/2019/02/how-to-get-get-device-model-number-android.html)<br/>
