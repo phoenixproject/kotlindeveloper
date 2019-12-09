@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         //var url = "http://localhost:52522/teste/testepost"
         //termos[0] = "http://localhost:52522/teste/testepost"
         //termos[0] = "http://192.168.103.7:52522/teste/testepost"
-        termos[0] = "http://192.168.102.75:57075/api/values"
+        //termos[0] = "http://192.168.102.75:57075/api/values"
         //termos[0] = "http://192.168.1.21:10049/teste/testepost"
         //termos[0] = "http://192.168.1.21:10049/teste/create"
         //termos[0] = "http://192.168.103.7:52522/teste/create"
