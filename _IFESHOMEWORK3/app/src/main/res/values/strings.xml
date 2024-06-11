@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">IFESHOMEWORK2 - Tip Calculator</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="activity2">Activity 2</string>
+    <string name="activity3">Activity 3</string>
+    <string name="imagem">Paisagem</string>
+
+    <string name="enter_amount">Enter Amount</string>
+    <string name="tip_percentage">15%</string>
+    <string name="tip">Tip</string>
+    <string name="total">Total</string>
+</resources>
