@@ -13,15 +13,17 @@
     android:useDefaultMargins="true">
 
     <EditText
+        android:id="@+id/amountEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:id="@+id/amountEditText"
         android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:autofillHints=""
         android:digits="0123456789"
-        android:maxLength="6"
         android:ems="10"
-        android:layout_columnSpan="2"/>
+        android:hint="@string/enter_amount"
+        android:inputType="number"
+        android:maxLength="6" />
 
     <TextView
         android:layout_width="wrap_content"

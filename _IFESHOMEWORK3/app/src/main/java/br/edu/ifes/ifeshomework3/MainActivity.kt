@@ -3,6 +3,8 @@ package br.edu.ifes.ifeshomework3
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.SeekBar
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,24 +21,37 @@ class MainActivity : ComponentActivity() {
 
     }
 
-    fun clickActivity2(view: View) {
-        //Log.e("clickItemHoro", view!!.tag.toString())
+    // Find the SeekBar in the layout with id name as
+    // R.id.seekbar1
+    val seek = findViewById<SeekBar>(R.id.percentSeekBar)
 
-        val i: Intent = Intent(
-            this@MainActivity,
-            Activity2::class.java
-        )
-        startActivity(i)
-    }
+    // Set up a listener for SeekBar changes
+    seek?.setOnSeekBarChangeListener(
+    object : SeekBar.OnSeekBarChangeListener {
 
-    fun clickActivity3(view: View) {
+        // Handle when the progress changes
+        override fun onProgressChanged(seek: SeekBar,
+                                       progress: Int, fromUser: Boolean) {
 
-        val i: Intent = Intent(
-            this@MainActivity,
-            Activity3::class.java
-        )
-        startActivity(i)
-    }
+            // Write custom code here if needed
+        }
+
+        // Handle when the user starts tracking touch
+        override fun onStartTrackingTouch(seek: SeekBar) {
+
+            // Write custom code here if needed
+        }
+
+        // Handle when the user stops tracking touch
+        override fun onStopTrackingTouch(seek: SeekBar) {
+
+            // Message for Toast
+            val output = "Progress is: " + seek.progress + "%"
+
+            // Get the current progress and display it in a toast message
+            //Toast.makeText(MainActivity::class.java, output , Toast.LENGTH_SHORT).show()
+        }
+    })
 }
 
 @Composable
