@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">IFESHOMEWORK6 - Leitor/Escritor de Arquivo</string>
     <string name="write_button">Escrever no Arquivo</string>
-    <string name="read_button">Ler do arquivo File</string>
+    <string name="read_button">Ler do arquivo</string>
     <string name="file_content">Conteúdo do Arquivo</string>
 
     <!-- Strings used for fragments for navigation -->

@@ -18,7 +18,7 @@ import java.io.File
 
 class MainActivity : ComponentActivity() {
 
-    private val fileName = "novo_arquivo.txt"
+    private val fileName = "arquivo_novo.txt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
