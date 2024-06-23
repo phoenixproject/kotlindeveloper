@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/writeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/write_button" />
+
+    <Button
+        android:id="@+id/readButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/read_button" />
+
+    <TextView
+        android:id="@+id/fileContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="@string/file_content" />
+
+</LinearLayout>
